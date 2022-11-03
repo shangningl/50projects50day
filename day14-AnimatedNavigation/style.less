@@ -1,0 +1,96 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #eafbff;
+  // 背景图片使用线性渐变，若不加100% height，会有多个分层
+  // 50%为渐变的过渡位置在一半
+  background-image: linear-gradient(
+    to bottom,
+    #eafbff 0%,
+    #eafbff 50%,
+    #5290f9 50%,
+    #5290f9 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  nav {
+    background-color: #fff;
+    padding: 20px;
+    width: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    transition: width 0.6s linear;
+    &.active {
+      width: 350px;
+      ul {
+        width: 100%;
+        li {
+          opacity: 1;
+          transform: rotateY(360deg);
+        }
+      }
+      .icon {
+        // 使画出来的两根线交叉
+        .line1 {
+          transform: rotate(-765deg) translateY(5.5px);
+        }
+        .line2 {
+          transform: rotate(765deg) translateY(-5.5px);
+        }
+      }
+    }
+    ul {
+      display: flex;
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      width: 0;
+      transition: width 0.6s linear;
+      li {
+        transform: rotateY(0deg);
+        opacity: 0;
+        transition: transform 0.6s linear, opacity 0.6s linear;
+        a {
+          position: relative;
+          color: #000;
+          text-decoration: none;
+          margin: 0 10px;
+        }
+      }
+    }
+    .icon {
+      background-color: #fff;
+      border: 0;
+      cursor: pointer;
+      padding: 0;
+      position: relative;
+      height: 30px;
+      width: 30px;
+      &:focus {
+        outline: 0;
+      }
+      .line {
+        background-color: #5290f9;
+        height: 2px;
+        width: 20px;
+        position: absolute;
+        top: 10px;
+        left: 5px;
+        transition: transform 0.6s linear;
+
+        &.line2 {
+          top: auto;
+          bottom: 10px;
+        }
+      }
+    }
+  }
+}
