@@ -1,0 +1,112 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  background-color: #333;
+  color: #222;
+  overflow-x: hidden;
+  margin: 0;
+}
+body .container {
+  background-color: #fafafa;
+  transform-origin: top left;
+  transition: transform 0.5s linear;
+  width: 100vw;
+  min-height: 100vh;
+  padding: 50px;
+}
+body .container .circle-container {
+  position: fixed;
+  top: -100px;
+  left: -100px;
+}
+body .container .circle-container .circle {
+  background-color: #ff7979;
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  position: relative;
+  transition: transform 0.5s linear;
+}
+body .container .circle-container .circle button {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 100px;
+  background: transparent;
+  border: 0;
+  color: #fff;
+}
+body .container .circle-container .circle button:focus {
+  outline: none;
+}
+body .container .circle-container .circle button#open {
+  left: 60%;
+}
+body .container .circle-container .circle button#close {
+  top: 60%;
+  transform: rotate(90deg);
+  transform-origin: top left;
+}
+body .container .content {
+  max-width: 100%;
+  margin: 50px auto;
+}
+body .container .content h1 {
+  margin: 0;
+}
+body .container .content small {
+  color: #555;
+  font-style: italic;
+}
+body .container .content p {
+  color: #333;
+  line-height: 1.5;
+}
+body .container .content img {
+  max-width: 100%;
+}
+body nav {
+  position: fixed;
+  bottom: 40px;
+  left: 0;
+  z-index: 100;
+}
+body nav ul {
+  list-style-type: none;
+  padding: 30px;
+}
+body nav ul li + li {
+  margin-left: 15px;
+  transform: translateX(-150%);
+}
+body nav ul li + li + li {
+  margin-left: 30px;
+  transform: translateX(-200%);
+}
+body nav ul li {
+  text-transform: uppercase;
+  color: #fff;
+  margin: 40px 0;
+  transform: translateX(-100%);
+}
+body nav a {
+  color: #fafafa;
+  text-decoration: none;
+  transition: all 0.5s;
+}
+body nav a:hover {
+  color: #ff7979;
+  font-weight: bold;
+}
+.container.show-nav {
+  transform: rotate(-20deg);
+}
+.container.show-nav .circle {
+  transform: rotate(-70deg);
+}
+.container.show-nav + nav li {
+  transform: translateX(0);
+  transition-delay: 0.3s;
+}

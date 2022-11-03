@@ -1,0 +1,96 @@
+
+:root {
+  --line-border-fill: #3498db;
+  --line-border-empty: #e0e0e0;
+}
+* {
+  box-sizing: border-box;
+}
+
+body {
+  // 背景颜色
+  background-color: #1f1f1f;
+  // flex布局，水平垂直居中
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+  .container {
+    // 文字居中
+    text-align: center;
+    .progress-container{
+      display: flex;
+      // 元素均衡分布两侧
+      justify-content: space-between;
+      position: relative;
+      margin-bottom: 30px;
+      max-width: 100%;
+      width: 350px;
+      &::before{
+        content: '';
+        background-color: var(--line-border-empty);
+        position: absolute;
+        top: 50%;
+        left: 0;
+        //-Y方向移动,百分比指的是盒子高度
+        transform: translateY(-50%);
+        height: 4px;
+        width: 100%;
+        // 优先级-1，放在其他元素下面
+        z-index: -1;
+      }
+      #progress{
+        background-color: var(--line-border-fill);
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        height: 4px;
+        // 刚开始为0%，默认只激活了1
+        width: 0%;
+        z-index: -1;
+        transition: 0.4s ease;
+      }
+      .circle{
+        background-color: #1f1f1f;
+        color:#e2e2e2;
+        // 50%是圆
+        border-radius: 50%;
+        height: 30px;
+        width: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 3px solid var(--line-border-empty);
+        transition: 0.4s ease;
+      }
+      .active{
+        // 为激活的圆边框上色
+        border-color: var(--line-border-fill);
+      }
+    }
+    .btn{
+      background-color: var(--line-border-fill);
+      color: #fff;
+      border: 0;
+      border-radius: 6px;
+      cursor: pointer;
+      font-family: inherit;
+      padding: 8px 30px;
+      margin: 5px;
+      font-size: 14px;
+      &:active{
+        transform: scale(0.98);
+      }
+      &:focus{
+        outline: 0;
+      }
+      &:disabled{
+        background-color: var(--line-border-empty);
+        cursor: not-allowed;
+      }
+    }
+  }
+}

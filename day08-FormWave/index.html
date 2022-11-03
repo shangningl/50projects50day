@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>08-表单波浪</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Please Login</h1>
+      <form>
+        <div class="form-control">
+          <!-- 必填字段required -->
+          <input type="text" required />
+          <label>Email</label>
+        </div>
+
+        <div class="form-control">
+          <input type="password" required />
+          <label>Password</label>
+        </div>
+        <button class="btn">Login</button>
+        <p class="text">
+          Don't have an account?
+          <a href="#">Register</a>
+        </p>
+      </form>
+    </div>
+  </body>
+</html>
+
+<script>
+  const labels = document.querySelectorAll(".form-control label");
+
+  labels.forEach((label) => {
+    label.innerHTML = label.innerText.split('')
+    .map((letter, idx) => 
+      `<span style="transition-delay:${idx * 50}ms">${letter}</span>`
+    )
+    .join("")
+  });
+  /**split()分割字符串为数组
+   * map遍历每个元素，并取出其坐标，注意匿名函数中不要加大括号，若加{}，内部应补return
+   * 最后将字符拼接为字符串
+  */
+</script>

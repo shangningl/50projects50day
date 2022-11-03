@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>09-声音键盘</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <audio id="applause" src="Sounds/applause.mp3"></audio>
+    <audio id="boo" src="Sounds/boo.mp3"></audio>
+    <audio id="gasp" src="Sounds/gasp.mp3"></audio>
+    <audio id="tada" src="Sounds/tada.mp3"></audio>
+    <audio id="victory" src="Sounds/victory.mp3"></audio>
+    <audio id="wrong" src="Sounds/wrong.mp3"></audio>
+
+    <div id="buttons"></div>
+  </body>
+
+  <script>
+    const sounds = ["applause", "boo", "gasp", "tada", "victory", "wrong"];
+
+    sounds.forEach((sound) => {
+      const btn=document.createElement('button')
+      btn.classList.add('btn')
+      btn.innerText = sound
+
+      btn.addEventListener('click',() => {
+        stopSongs()
+        document.getElementById(sound).play()
+      })
+
+      document.getElementById('buttons').appendChild(btn)
+    })
+
+    function stopSongs(){
+      sounds.forEach((sound) => {
+        const song=document.getElementById(sound)
+
+        song.pause()
+        song.currentTime = 0;
+      })
+    }
+
+  </script>
+</html>

@@ -1,0 +1,30 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  background-color: #a164df;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+}
+body #buttons button.btn {
+  background-color: rebeccapurple;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  margin: 1rem;
+  padding: 1.5rem 3rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+body #buttons button.btn:hover {
+  opacity: 0.8;
+}
+body #buttons button.btn:focus {
+  outline: none;
+}

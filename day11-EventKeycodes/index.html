@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>11-按键事件</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="insert">
+      <div class="key">按下任意按键获得按键码</div>
+    </div>
+
+    <script>
+      const insert = document.getElementById("insert");
+
+      window.addEventListener("keydown", (event) => {
+        insert.innerHTML = `
+            <div class="key">
+                ${event.key === " " ? "Space" : event.key}
+                <small>event.key</small>
+            </div>
+            <div class="key">
+            ${event.keyCode}
+            <small>event.keyCode</small>
+            </div>
+    
+            <div class="key">
+             ${event.code}
+            <small>event.code</small>
+            </div>
+            `;
+      });
+    </script>
+  </body>
+</html>
+
+<!-- class与id不同，id可以操作该节点，class用于css修饰 -->

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>05-模糊加载</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- 语义化标签，无实际功能 -->
+    <section class="bg"></section>
+    <div class="loading-text">0%</div>
+  </body>
+</html>
+
+<script>
+  const loadText = document.querySelector(".loading-text");
+  const bg = document.querySelector(".bg");
+
+  let load = 0;
+  let int = setInterval(blurring, 30);
+
+  function blurring() {
+    load++;
+    if (load > 99) {
+      clearInterval(int);
+    }
+    // ES6语法，字符串格式
+    loadText.innerText = `${load}%`;
+    loadText.style.opacity = scale(load, 0, 100, 1, 0);
+    bg.style.filter = `blur(${scale(load, 0, 100, 30, 0)}px)`;
+  }
+// 在一个变量范围内，取另一个范围内的数
+  const scale = (num, in_min, in_max, out_min, out_max) => {
+    return ((num - in_min) * (out_max - out_min)) / (in_max - in_min) + out_min;
+  };
+</script>

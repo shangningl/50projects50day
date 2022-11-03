@@ -1,0 +1,135 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #333;
+    color: #222;
+    overflow-x: hidden;
+    margin: 0;
+    .container {
+        background-color: #fafafa;
+        // 旋转基点 绕着左上旋转
+        transform-origin: top left;
+        transition: transform 0.5s linear;
+        width: 100vw;
+        min-height: 100vh;
+        padding: 50px;
+        .circle-container {
+            position: fixed;
+            // 消失了？
+            top: -100px;
+            left: -100px;
+          .circle {
+            background-color: #ff7979;
+            // 出现了1/4圆圈栏
+            height: 200px;
+            width: 200px;
+            border-radius: 50%;
+            position: relative;
+            transition: transform 0.5s linear;
+            button{
+                cursor: pointer;
+                position: absolute;
+                // 按钮居中
+                top: 50%;
+                left: 50%;
+                height: 100px;
+                // 背景透明
+                background: transparent;
+                // 去掉边框
+                border: 0;
+                color: #fff;
+                &:focus{
+                    outline: none;
+                }
+            }
+            button#open{
+                left: 60%;
+            }
+            button#close{
+                top: 60%;
+                // 字体旋转了90°，距离判断就是top
+                transform: rotate(90deg);
+                // 字体旋转到了圆内某个位置
+                transform-origin: top left;
+            }
+          }
+        }
+        .content {
+            max-width: 100%;
+            margin: 50px auto;
+            h1{
+                margin: 0;
+            }
+            small{
+                color: #555;
+                // 斜体
+                font-style: italic;                
+            }
+            p{
+                color: #333;
+                line-height: 1.5;
+            }
+            img{
+                // 让图片适配显示
+                max-width: 100%;
+            }
+        }
+      }
+    nav{
+        position: fixed;
+        bottom: 40px;
+        left: 0;
+        z-index: 100;
+        ul{
+            // 去除圆点
+            list-style-type: none;
+            padding: 30px;
+            li+li{
+                // 选择的是About和Contact两个标签
+                margin-left: 15px;
+                transform: translateX(-150%);
+            }
+            li+li+li{
+                // 选择的是Contact两个标签
+                margin-left: 30px;
+                transform: translateX(-200%);
+            }
+            li{
+                // 字体全部大写
+                text-transform: uppercase;
+                color: #fff;
+                margin: 40px 0;
+                // 让导航栏从左侧消失
+                transform: translateX(-100%);
+            }
+
+        }
+        a{
+            color: #fafafa;
+            // 去掉下划线
+            text-decoration: none;
+            transition:all 0.5s;
+            &:hover{
+                color: #ff7979;
+                font-weight: bold;
+            }
+        }
+    }
+}
+
+// 整体旋转，选择container
+.container.show-nav{
+    transform: rotate(-20deg);
+    .circle{
+        transform: rotate(-70deg);
+    }
+}
+// 使用相邻选择器
+.container.show-nav+nav li{
+    // 所有旋转的X轴失效
+    transform: translateX(0);
+    // 延迟播放
+    transition-delay: 0.3s;
+}

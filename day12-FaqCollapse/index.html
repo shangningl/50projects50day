@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+      integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>12-折叠FAQ</title>
+  </head>
+  <body>
+    <h1>FAQ</h1>
+    <div class="faq-container">
+      <div class="faq active">
+        <h3 class="faq-title">问题1</h3>
+        <p class="faq-text">问题1的回答</p>
+        <button class="faq-toggle">
+          <i class="fas fa-chevron-down"></i>
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <div class="faq">
+        <h3 class="faq-title">问题2</h3>
+        <p class="faq-text">问题2的回答</p>
+        <button class="faq-toggle">
+          <i class="fas fa-chevron-down"></i>
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="faq">
+        <h3 class="faq-title">问题3</h3>
+        <p class="faq-text">问题3的回答</p>
+        <button class="faq-toggle">
+          <i class="fas fa-chevron-down"></i>
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="faq">
+        <h3 class="faq-title">问题4</h3>
+        <p class="faq-text">问题4的回答</p>
+        <button class="faq-toggle">
+          <i class="fas fa-chevron-down"></i>
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="faq">
+        <h3 class="faq-title">问题5</h3>
+        <p class="faq-text">问题5的回答</p>
+        <button class="faq-toggle">
+          <i class="fas fa-chevron-down"></i>
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    const toggles = document.querySelectorAll('.faq-toggle')
+
+    toggles.forEach((toggle) => {
+      toggle.addEventListener('click',() => {
+        // toggle的父节点为faq，为其添加样式切换active
+        toggle.parentNode.classList.toggle('active')
+      })
+    })
+  </script>
+
+</html>

@@ -1,0 +1,56 @@
+
+*{
+    // 标准盒模型
+    box-sizing: border-box;
+}
+body{
+    // 使用flex布局，并水平垂直居中
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+    .container{
+        //flex布局，使其由纵向变横向排列
+        display: flex;
+        width: 90vw;        
+        .panel{
+            background-image: url("https://images.unsplash.com/photo-1558979158-65a1eaa08691?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80");
+            // 缩放背景图片使得【覆盖】背景区
+            background-size: cover;
+            // 让图片定位到中间
+            background-position: center;
+            height: 80vh;
+            // 圆角
+            border-radius: 50px;
+            color: #fff;
+            // 鼠标在上面呈现可点击样式
+            cursor: pointer;
+            flex:0.5;
+            margin: 10px;
+            // 方便文字进行定位？
+            position: relative;
+            transition: all 700ms ease-in;
+
+            h3{
+                font-size: 24px;
+                // 让文字放在底部左下角
+                position: absolute;
+                bottom: 20px;
+                left: 20px;
+                margin: 0;
+                opacity: 0;
+            }
+        }
+        .active{
+            flex: 5;
+            h3{
+                opacity: 1;
+                transition: opacity 0.3s ease-in 0.4;
+            }
+        }    
+    }
+}
+
+

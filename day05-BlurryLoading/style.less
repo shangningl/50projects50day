@@ -1,0 +1,30 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+  .bg {
+    // 背景图 不平铺、放于中心、中心缩放
+    background: url("https://ts1.cn.mm.bing.net/th/id/R-C.61e10abb31be7153915f6550ad077542?rik=oukmhTAyezTNDw&riu=http%3a%2f%2fi3.img.969g.com%2fdown%2fimgx2014%2f12%2f22%2f289_093449_8ced3.jpg&ehk=mci1AffXHcwklYpn7cpFWSvZz3evIeDYflmll9wiy44%3d&risl=&pid=ImgRaw&r=0")
+    no-repeat center center/cover;
+    position: absolute;
+    top: -30px;
+    left: -30px;
+    // calc()中变量间有空格
+    width: calc(100vw + 60px);
+    height: calc(100vh + 60px);
+    z-index: -1;
+    // 加入滤镜,高斯模糊效果
+    filter: blur(0px);
+}
+  .loading-text {
+    font-size: 50px;
+    color: green;
+  }
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>06-滚动动画</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>滚动页面以查看动画</h1>
+    <div class="box"><h2>内容</h2></div>
+    <div class="box"><h2>内容</h2></div>
+    <div class="box"><h2>内容</h2></div>
+    <div class="box"><h2>内容</h2></div>
+    <div class="box"><h2>内容</h2></div>
+    <div class="box"><h2>内容</h2></div>
+    <div class="box"><h2>内容</h2></div>
+    <div class="box"><h2>内容</h2></div>
+    <div class="box"><h2>内容</h2></div>
+    <div class="box"><h2>内容</h2></div>
+    <div class="box"><h2>内容</h2></div>
+    <div class="box"><h2>内容</h2></div>
+    <div class="box"><h2>内容</h2></div>
+
+    <script>
+      const boxes = document.querySelectorAll(".box");
+      // 窗口监听滚动事件
+      window.addEventListener("scroll", checkBoxes);
+
+      checkBoxes();
+
+      function checkBoxes() {
+        // 触发器底部坐标
+        const triggerBottom = (window.innerHeight / 5) * 4;
+        const triggerTop = window.innerHeight / 7;
+
+        boxes.forEach((box) => {
+          //获取箱体顶部坐标
+          const boxTop = box.getBoundingClientRect().top;
+          const boxBottom = box.getBoundingClientRect().bottom;
+
+          if (boxTop < triggerBottom && boxBottom > triggerTop) {
+            box.classList.add("show");
+          } else {
+            box.classList.remove("show");
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

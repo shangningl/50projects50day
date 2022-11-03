@@ -1,0 +1,37 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(161, 100, 223);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+
+  #buttons {
+    // js中加入了button组件，所以btn样式属于button之中
+    button {
+      &.btn {
+        background-color: rebeccapurple;
+        border: none;
+        border-radius: 5px;
+        color: #fff;
+        margin: 1rem;
+        padding: 1.5rem 3rem;
+        font-size: 1.2rem;
+        cursor: pointer;
+        &:hover {
+          opacity: 0.8;
+        }
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+  }
+}
