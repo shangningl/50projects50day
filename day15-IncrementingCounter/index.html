@@ -43,6 +43,7 @@
           // 每一跳增加200
           const increment = target / 200;
           if (c < target) {
+            // 当前数字小于target，则增加
             counter.innerText = `${Math.ceil(c + increment)}`;
             setTimeout(updateCounter, 1);
           } else {

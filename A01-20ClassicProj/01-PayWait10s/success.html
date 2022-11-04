@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>支付页面</title>
+    <style>
+      div {
+        margin: 0 auto;
+        width: 500px;
+      }
+      #jumpTo {
+        color: red;
+        font-size: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h2>恭喜您支付成功</h2>
+      <span id="jumpTo">10</span>s后自动返回支付页面
+      <br />
+      <button>立即返回</button>
+    </div>
+    <script>
+      // 加载页面时，应该触发 10s的定时器
+      window.onload = function () {
+        let timer = 10;
+        const timeNum = document.getElementById("jumpTo");
+        setInterval(() => {
+          timer--;
+          timeNum.innerText = timer;
+          if (timer <= 0) {
+            location.href = "./index.html";
+          }
+        }, 1000);
+      };
+      // 使用TagName获取元素的话，返回的是数组，html中只有一个元素，选0即可
+      const btnReturn = document.getElementsByTagName("button")[0];
+    //   console.log(btnReturn);
+      btnReturn.onclick = function () {
+        location.href = "./index.html";       
+      };
+    </script>
+  </body>
+</html>
