@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>03-验证码</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        border: 0;
+      }
+      .code {
+        border: 5px;
+        background-color: #aba2a2;
+        font-size: 30px;
+        color: blue;
+        font-weight: bold;
+        font-style: italic;
+        Letter-spacing:2px
+      }
+      a{
+        margin-left: 10px;
+        text-decoration:none
+      }
+    </style>
+  </head>
+  <body>
+    <div class="code-container">
+      <div class="code-show">
+        <span class="code" id="checkCode">adfef1</span>
+        <a href="#" id="linkbt">看不清换一张</a>
+      </div>
+      <div class="input-container">
+        <label for="inputCode">验证码</label>
+        <input type="text" id="inputCode" />
+        <span id="textShow"></span>
+      </div>
+      <button id="btn">确定</button>
+    </div>
+
+    <script>
+      const alpha = new Array(26)
+        .fill(null)
+        .map((v, i) => String.fromCharCode(97 + i));
+      const nums = new Array(10).fill(null).map((v, i) => i);
+      let arr = [...nums, ...alpha];
+
+      window.onload = function () {
+        let res = getCode();
+        function getCode() {
+          let str = "";
+          for (let i = 0; i < 6; i++) {
+            let s = Math.round(Math.random() * (26 + 10 - 1) + 0);
+            str += arr[s];
+          }
+          return str;
+        }
+        let code = document.getElementById("checkCode");
+        code.innerText = res;
+
+        // 点击切换验证码
+        document.getElementById("linkbt").onclick = function () {
+          code.innerText = getCode();
+        };
+        document.getElementById("btn").onclick = function () {
+          let inputCode = document.getElementById("inputCode");
+          if (code.innerText !== inputCode.value) {
+            alert("验证码不正确");
+            inputCode.value = "";
+            return false;
+          }
+        };
+      };
+    </script>
+  </body>
+</html>
