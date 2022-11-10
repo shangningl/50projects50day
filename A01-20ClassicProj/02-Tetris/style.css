@@ -5,11 +5,19 @@ body .container {
   position: relative;
   overflow: hidden;
 }
-body .container .activaty-model {
+body .container .activity-model {
   width: 20px;
   height: 20px;
   background-color: deepskyblue;
   border: 0.3px solid #eeeeee;
+  box-sizing: border-box;
+  position: absolute;
+}
+body .container .fixed-model {
+  width: 20px;
+  height: 20px;
+  background-color: #fefefe;
+  border: 0.3px solid #333333;
   box-sizing: border-box;
   position: absolute;
 }
