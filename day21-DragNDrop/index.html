@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>21-网页拖拽与放入</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="empty">
+      <div class="fill" draggable="true"></div>
+    </div>
+    <div class="empty"></div>
+    <div class="empty"></div>
+    <div class="empty"></div>
+    <div class="empty"></div>
+    <script>
+      const fill = document.querySelector(".fill");
+      const empties = document.querySelectorAll(".empty");
+      fill.addEventListener("dragstart", dragStart);
+      fill.addEventListener("dragend", dragEnd);
+
+      // 为每一个div.empty添加drag相关事件
+      for (const empty of empties) {
+        empty.addEventListener("dragover", dragOver);
+        empty.addEventListener("dragenter", dragEnter);
+        empty.addEventListener("dragleave", dragLeave);
+        empty.addEventListener("drop", dragDrop);
+      }
+
+      function dragStart() {
+        // 加入hold样式
+        this.className += " hold";
+        setTimeout(() => (this.className = "invisible"), 0);
+      }
+
+      function dragEnd() {
+        // 图片已填充进去
+        this.className = "fill";
+      }
+
+      function dragOver(e) {
+        /* 告诉user-agent：如果此事件没有被显式处理，它默认的动作也不应该照常执行。此事件还是继续传播 */
+        e.preventDefault();
+      }
+
+      function dragEnter(e) {
+        e.preventDefault();
+        this.className += " hovered";
+      }
+      function dragLeave() {
+        this.className = "empty";
+      }
+
+      function dragDrop() {
+        this.className = "empty";
+        this.append(fill);
+      }
+    </script>
+  </body>
+</html>
